@@ -1,0 +1,362 @@
+/*添加标签*/
+*{margin: 0;padding: 0;list-style-type: none;text-decoration: none;}
+.box{margin:20px 0px;}
+.bootstrap-tagsinput {
+     background-color: white;
+    border: 2px solid #ebedef;
+    margin-bottom: 20px;
+    padding: 6px 1px 1px 6px;
+    text-align: left;
+    font-size: 0;
+}
+
+.bootstrap-tagsinput .badge {
+  border-radius: 4px;
+  background-color: #ebedef;
+  color: #7b8996;
+  font-size: 13px;
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  overflow: hidden;
+  margin: 0 5px 5px 0;
+
+
+  padding: 6px 28px 6px 14px;
+  transition: .25s linear;
+}
+
+.bootstrap-tagsinput .badge > span {
+  color: white;
+  padding: 0 10px 0 0;
+  cursor: pointer;
+  font-size: 12px;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  text-decoration: none;
+  top: 0;
+  width: 100%;
+  bottom: 0;
+  z-index: 2;
+}
+
+.bootstrap-tagsinput .badge > span:after {
+  content: "x";
+  font-family: "Flat-UI-Pro-Icons";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 27px;
+}
+
+@media (hover: hover) {
+  .bootstrap-tagsinput .badge {
+    padding: 6px 21px;
+  }
+  .bootstrap-tagsinput .badge > span {
+    opacity: 0;
+    filter: "alpha(opacity=0)";
+    transition: opacity .25s linear;
+  }
+  .bootstrap-tagsinput .badge:hover {
+    background-color: #C92027;
+    color: white;
+    padding-right: 28px;
+    padding-left: 14px;
+  }
+  .bootstrap-tagsinput .badge:hover > span {
+    padding: 0 10px 0 0;
+    opacity: 1;
+    -webkit-filter: none;
+            filter: none;
+  }
+}
+
+
+.bootstrap-tagsinput input[type="text"] {
+  font-size: 14px;
+  text-indent: 14px;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+  width: auto !important;
+  max-width: inherit;
+  min-width: 80px;
+  vertical-align: top;
+  height: 29px;
+  color: #34495e;
+}
+
+	.tagsinput-primary {
+  display: inline-block;
+    vertical-align: middle;
+    width: 700px;
+}
+
+.tagsinput-primary .bootstrap-tagsinput {
+  border-color: #efefef;
+  margin-bottom: 0;
+}
+
+.tagsinput-primary .badge {
+  background-color: #f24024;
+  color: white;
+}
+.btn{background: #1ABC9C;border: none;color: #fff;padding: 10px;border-radius: 5px;margin-top: 10px;}
+/*标签结束*/
+
+
+
+
+/*下拉start*/
+.selectBox{
+				width: 300px;
+				height: 40px;
+				line-height: 40px;
+				background: #f72323;
+				
+				position: relative;
+			}
+			input::-ms-clear, input::-ms-reveal{
+				/*clear去掉叉  reveal去掉眼睛;但是只能去掉ie10及以上，ie9及以下去不掉*/
+			    display: none;  
+			}
+			
+			.inputCase{
+				position: relative;
+				width: 100%;
+				height: 100%;
+				box-sizing: border-box;
+			}
+			.inputCase input.imitationSelect{
+				width: 100%;
+				height: 100%;
+				box-sizing: border-box;
+				border: 2px solid #ebedef;
+				display: block;
+				text-indent: 20px;
+				cursor: default;
+			}
+			.inputCase i.fa{
+				position: absolute;
+				right: 10px;
+				top: 10px;
+				color: #f24024;
+				font-size: 20px;
+				z-index: 99999;
+			}
+			.fa{
+				cursor: pointer;
+			}
+			.selectUl{
+				display: none;
+				padding: 0;
+				margin: 0;
+				border-bottom: 1px solid #ccc;
+				border-left: 1px solid #ccc;
+				border-right: 1px solid #ccc;
+				position: absolute;
+				z-index:9;
+			}
+			.selectUl li{
+				height: 40px;
+				line-height: 40px;
+				list-style: none;
+				text-indent: 20px;
+				border-bottom: 1px solid #ccc;
+				    background-color: white;
+				    width: 298px;
+			}
+			.selectUl li:hover{
+				background: #ddd;
+			}
+			.selectUl li:last-child{
+				border-bottom: 0 none;
+			}
+			
+			/*下拉end*/
+			
+			/*编辑框*/
+
+.container a {
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease-in;
+}
+.main-wrapper {
+   box-shadow: -1px -1px 4px #e9e9e9;
+    border: 1px solid #e9e9e9;
+    margin:0px auto;
+    position: relative;
+    min-height: 500px;
+    width: 1202px;
+    background-color: #fff;
+    
+}
+.row{
+	padding: 0;
+    margin-left: 0px;
+    margin-right: 0;
+}
+#sidebar {
+    padding-right: 0px;
+    padding-left: 0px;
+    background: #fff;
+    width: 180px;
+    position: absolute;
+}
+
+.list-group-item {
+    padding: 0.75rem 2rem;
+    color: #4f4f4f;
+    font-size: 14px;
+    border: 0px;
+    transition: unset;
+}
+.list-group-title{
+	padding: 0.75rem 1.5rem;
+    color: #bbb;
+}
+.list-group {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+.list-group-item.active {
+    z-index: 2;
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+.list-group-item.active {
+
+    background-color: #C92027;
+    border-color: #C92027;
+}
+.list-group a:hover {
+	z-index: 2;
+    color: #fff;
+   background-color: #C92027;
+    border-color: #C92027;
+}
+.sidebar-offcanvas {
+    padding-top: .75rem;
+}
+
+#content-body {
+      padding: 1.5rem;
+    background-color: #fff;
+    padding-bottom: 80px;
+    margin-left: 181px;
+    top: 0px;
+    border-left: 1px solid #e9e9e9;
+}
+
+div.title-box {
+    margin-bottom: 24px;
+}
+#txtTitle {
+    display: block;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    box-sizing: border-box;
+    padding: 0 16px;
+    border: none;
+    background-color: #efefef;
+    color: #4f4f4f;
+}
+.wrap {
+  position: relative;
+      vertical-align: middle;
+    display: inline-block;
+}
+
+.wrap label {
+  margin: 1.5em auto;
+}
+
+.wrap input {
+  position: absolute;
+  left: -9999px;
+}
+
+
+.slider-v3 {
+  position: relative;
+  display: block;
+  width: 4em;
+  height: 2em;
+  cursor: pointer;
+  border-radius: 1.5em;
+  transition: 350ms;
+  background: #ddd;
+}
+
+.slider-v3::after {
+  position: absolute;
+  content: '';
+  width: 1em;
+  height: 1em;
+  top: 0.5em;
+  left: 0.5em;
+  border-radius: 1.5em;
+  transition: width 200ms ease-out, height 300ms 50ms ease-in, top 300ms 50ms ease-in, left 250ms 50ms ease-in, background 300ms ease-in, box-shadow 300ms ease-in;
+  background: #f2f2f2;
+  box-shadow: 0 0 0 1.5em #f2f2f2 inset;
+}
+
+.wrap input:checked + .slider-v3::after {
+  width: 2em;
+  height: 2em;
+  top: 0;
+  left: 2em;
+  background: #4c6;
+  box-shadow: 0 0 0 0 #f2f2f2 inset;
+}	
+.checkbox_msg_none{
+	display:none;
+}
+.checkbox_msg{
+	vertical-align: middle;
+    padding-left: 20px;
+}
+.edit_title{
+	vertical-align: middle;
+    display: inline;
+}
+.edit_button{
+	width: 100px;
+    height: 40px;
+    background-color: white;
+    border: 1px solid #C92027;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left:20px;
+}	
+.edit_button_return{
+	width: 80px;
+    height: 30px;
+    background-color: white;
+    border: 1px solid #efefef;
+    border-radius: 5px;
+    cursor: pointer;
+    vertical-align: bottom;
+    margin-left:20px;
+}	
+.edit_button_return:hover{
+	background-color: #efefef;
+}
+.edit_button:hover{
+	background-color: #f24024;
+}
+.edit_button_div{
+    margin: 20px 0px 0px 80px;
+}
