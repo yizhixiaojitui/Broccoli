@@ -90,7 +90,6 @@ public class IndexController {
 		// @ModelAttribute("articleUtil") addArticleUtil articleUtil
 		Article article = new Article();
 		JSONObject json = new JSONObject();
-		
 			article.setArticleIp(CusAccessObjectUtil.getIpAddress(request));
 			article.setArticleName(articleUtil.getArticleName());
 			article.setArticleLabel(articleUtil.getArticleLabel());
