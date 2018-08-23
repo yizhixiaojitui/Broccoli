@@ -17,12 +17,19 @@
 <script type="text/javascript" src="layout/plugins/html5.js"></script>
 <![endif]-->
 <jsp:include page="inc/head.jsp" />
-<link rel="stylesheet" href="${pageContext.request.contextPath }/css/cropper.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath }/css/ImgCropping.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/cropper.min.css">
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath }/css/ImgCropping.css">
 <script src="${pageContext.request.contextPath }/js/cropper.min.js"></script>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<style>
+<style type="text/css">
+select {
+	padding: 5px;
+	border-radius: 5px;
+	outline: none;
+}
 </style>
 </head>
 
@@ -74,7 +81,7 @@
 			<section class="bottom">
 			<div class="inner" id="bottom_inner">
 				<div id="logo_top">
-					<a href="index.html"><img
+					<a href="${pageContext.request.contextPath }/home/test.action"><img
 						src="${pageContext.request.contextPath }/images/logo_top.png"
 						alt="BusinessNews" title="BusinessNews" /></a>
 				</div>
@@ -112,78 +119,119 @@
 
 		<!-- CONTENT BEGIN -->
 		<main role="main" class="container">
-	<div class="main-wrapper">
-<div class="sidebar-offcanvas" id="sidebar">
-	<div class="list-group-title list-group-item">内容</div>
-	<div class="list-group">
-		<a href="#" class="list-group-item active" >文章管理</a>
-		<a href="#" target="_blank" class="list-group-item none">专栏管理</a>
-		<a href="#" target="_blank" class="list-group-item none">专栏管理</a>
-		<a href="#" target="_blank" class="list-group-item none">专栏管理</a>
-		<a href="#" target="_blank" class="list-group-item none">专栏管理</a>
-	</div>
-	<div class="list-group-title list-group-item">内容</div>
-	<div class="list-group">
-		<a href="#" target="_blank" class="list-group-item none">专栏管理</a>
-		<a href="#" target="_blank" class="list-group-item none">专栏管理</a>
-	</div>
-</div>
+		<div class="main-wrapper">
+			<div class="sidebar-offcanvas" id="sidebar">
+				<div class="list-group-title list-group-item">内容</div>
+				<div class="list-group">
+					<a href="#" class="list-group-item active">文章管理</a> <a href="#"
+						target="_blank" class="list-group-item none">专栏管理</a> <a href="#"
+						target="_blank" class="list-group-item none">专栏管理</a> <a href="#"
+						target="_blank" class="list-group-item none">专栏管理</a> <a href="#"
+						target="_blank" class="list-group-item none">专栏管理</a>
+				</div>
+				<div class="list-group-title list-group-item">内容</div>
+				<div class="list-group">
+					<a href="#" target="_blank" class="list-group-item none">专栏管理</a> <a
+						href="#" target="_blank" class="list-group-item none">专栏管理</a>
+				</div>
+			</div>
 
-<div class="" id="content-body">
-<form action="" id="user_edit" method="post">
-	<div class="replaceicon">
-	<div id="replaceImg" class="replaceicon-msg" style="display:none" >更换头像</div>
-	<div    class="replaceicon-border" >
-    <img id="finalImg" src="${pageContext.request.contextPath }/images/ava_default_2.jpg" >
-    </div>
+			<div class="" id="content-body">
+				<form action="" id="user_edit" method="post">
+					<div class="replaceicon">
+						<div id="replaceImg" class="replaceicon-msg" style="display: none">更换头像</div>
+						<div class="replaceicon-border">
+							<img id="finalImg"
+								src="${pageContext.request.contextPath }/images/ava_default_2.jpg">
+						</div>
 
 
-<!--图片裁剪框 start-->
-<div style="display: none" class="tailoring-container" id="tailoring-container">
-    <div class="black-cloth" onclick="closeTailor(this)"></div>
-    <div class="tailoring-content">
-            <div class="tailoring-content-one">
-                <label title="上传图片" for="chooseImg" class="l-btn choose-btn">
-                    <input type="file" accept="image/jpg,image/jpeg,image/png" name="file" id="chooseImg" class="hidden" onchange="selectImg(this)">
-                    选择图片
-                </label>
-                <div class="close-tailoring"  onclick="closeTailor(this)">×</div>
-            </div>
-            <div class="tailoring-content-two">
-                <div class="tailoring-box-parcel">
-                    <img id="tailoringImg">
-                </div>
-                <div class="preview-box-parcel">
-                    <p>图片预览：</p>
-                    <div class="square previewImg"></div>
-                    <div class="circular previewImg"></div>
-                </div>
-            </div>
-            <div class="tailoring-content-three">
-                <label class="l-btn cropper-reset-btn">复位</label>
-                <label class="l-btn cropper-rotate-btn">旋转</label>
-                <label class="l-btn cropper-scaleX-btn">换向</label>
-                <label class="l-btn" id="clear">重置</label>
-                <label class="l-btn sureCut" id="sureCut">确定</label>
-            </div>
-        </div>
-</div>
-<!--图片裁剪框 end-->
+						<!--图片裁剪框 start-->
+						<div style="display: none" class="tailoring-container"
+							id="tailoring-container">
+							<div class="black-cloth" onclick="closeTailor(this)"></div>
+							<div class="tailoring-content">
+								<div class="tailoring-content-one">
+									<label title="上传图片" for="chooseImg" class="l-btn choose-btn">
+										<input type="file" accept="image/jpg,image/jpeg,image/png"
+										name="file" id="chooseImg" class="hidden"
+										onchange="selectImg(this)"> 选择图片
+									</label>
+									<div class="close-tailoring" onclick="closeTailor(this)">×</div>
+								</div>
+								<div class="tailoring-content-two">
+									<div class="tailoring-box-parcel">
+										<img id="tailoringImg">
+									</div>
+									<div class="preview-box-parcel">
+										<p>图片预览：</p>
+										<div class="square previewImg"></div>
+										<div class="circular previewImg"></div>
+									</div>
+								</div>
+								<div class="tailoring-content-three">
+									<label class="l-btn cropper-reset-btn">复位</label> <label
+										class="l-btn cropper-rotate-btn">旋转</label> <label
+										class="l-btn cropper-scaleX-btn">换向</label> <label
+										class="l-btn" id="clear">重置</label> <label
+										class="l-btn sureCut" id="sureCut">确定</label>
+								</div>
+							</div>
+						</div>
+						<!--图片裁剪框 end-->
 
-	</div>
-     <div class="edit_button_div">  <input class="edit_button" type="button" onclick="javascript:addArticle();"  value="发布"/>
-				
-					<input class="edit_button" type="button" value="保存草稿"/>
-				
-					<input class="edit_button_return" type="button"  value="返回"/>
 					</div>
-					</form>
+					<div class="textWrap wordSumTotal">
+						<label class="user-label">昵称：</label><input type="text" name=""
+							placeholder="昵称" maxlength="10">
 					</div>
-					
-</div>
-<div style="font: 0px/0px sans-serif;clear: both;display: block"> </div>
-</div>
-</main>
+					<div class="textWrap wordSumTotal">
+						<label class="user-label textarea-label">介绍：</label>
+						<textarea name="" cols="" rows="" maxlength="100"></textarea>
+					</div>
+					<div id="date" class="textWrap">
+						<label class="user-label ">生日：</label><input type="text"
+							class="demo-input" placeholder="生日" id="birthday">
+					</div>
+					<div class="textWrap">
+						<label class="user-label ">性别：</label> <label class="user-label ">
+							<i class='input_style radio_bg'><input type="radio"
+								name="hot" value="1"></i> 保密
+						</label> <label class="user-label "> <i
+							class='input_style radio_bg'><input type="radio" name="hot"
+								value="2"></i> 男
+						</label> <label class="user-label "> <i
+							class='input_style radio_bg'><input type="radio" name="hot"
+								value="3"></i> 女
+						</label>
+					</div>
+					<div class="textWrap">
+						<label class="user-label">邮箱：</label><input type="text" name=""
+							placeholder="邮箱">
+					</div>
+					<script>
+						lay('#version').html('-v' + laydate.v);
+
+						//执行一个laydate实例
+						//常规用法
+						laydate.render({
+							elem : '#birthday' //指定元素
+						});
+					</script>
+					<div class="edit_button_div">
+						<input class="edit_button" type="button"
+							onclick="javascript:addArticle();" value="发布" /> <input
+							class="edit_button" type="button" value="保存草稿" /> <input
+							class="edit_button_return" type="button" value="返回" />
+					</div>
+				</form>
+			</div>
+
+		</div>
+		<div style="font: 0px/0px sans-serif; clear: both; display: block">
+		</div>
+	</div>
+	</main>
 	<!-- CONTENT END -->
 	<footer id="bodyfooter" style="display:none">
 	<div id="footer" style="display: none">
@@ -333,7 +381,7 @@
 
 
 
-<script src="${pageContext.request.contextPath }/js/cut_icon.js"></script>
+	<script src="${pageContext.request.contextPath }/js/cut_icon.js"></script>
 
 
 </body>

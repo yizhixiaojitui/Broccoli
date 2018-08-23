@@ -72,3 +72,15 @@
 	
 <link rel="shortcut icon" href="${pageContext.request.contextPath }/images/favicon.ico" />	
 	
+	
+<script type="text/javascript"
+	src="${pageContext.request.contextPath }/js/textSum.min.js"></script>
+	
+	
+	
+	<script type="text/javascript"
+	src="${pageContext.request.contextPath }/layout/laydate/laydate.js"></script>
+	<script type="text/javascript"
+	src="${pageContext.request.contextPath }/js/input.js"></script>
+	<link rel='stylesheet' text="type/css" href="${pageContext.request.contextPath }/css/input.css">
+	

@@ -395,7 +395,7 @@ $(document).ready(function() {
 		
 		e.preventDefault();
 	});
-	
+	$('.wordSumTotal').textSum();
 	
 });
 
@@ -484,3 +484,5 @@ function pagingNum(paging){
     // 把构造的内容放上去pagingDiv
     $("#pagingDiv").html(pagingDivInnerHTML);  
 }
+
+
