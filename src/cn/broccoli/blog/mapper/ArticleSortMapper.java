@@ -30,5 +30,5 @@ public interface ArticleSortMapper {
     
     int insert(ArticleSort record);
     
-    int selectRepeat(ArticleSort record);
+    Integer selectRepeat(ArticleSort record);
 }

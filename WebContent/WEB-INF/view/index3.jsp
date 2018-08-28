@@ -116,15 +116,15 @@
 	<div class="list-group-title list-group-item">内容</div>
 	<div class="list-group">
 		<a href="#" class="list-group-item active" >文章管理</a>
-		<a href="#" target="_blank" class="list-group-item none">专栏管理</a>
-		<a href="#" target="_blank" class="list-group-item none">专栏管理</a>
-		<a href="#" target="_blank" class="list-group-item none">专栏管理</a>
-		<a href="#" target="_blank" class="list-group-item none">专栏管理</a>
+		<a href="#" target="_blank" class="list-group-item list-group-item-hover">专栏管理</a>
+		<a href="#" target="_blank" class="list-group-item list-group-item-hover">专栏管理</a>
+		<a href="#" target="_blank" class="list-group-item list-group-item-hover">专栏管理</a>
+		<a href="#" target="_blank" class="list-group-item list-group-item-hover">专栏管理</a>
 	</div>
 	<div class="list-group-title list-group-item">内容</div>
 	<div class="list-group">
-		<a href="#" target="_blank" class="list-group-item none">专栏管理</a>
-		<a href="#" target="_blank" class="list-group-item none">专栏管理</a>
+		<a href="#" target="_blank" class="list-group-item list-group-item-hover">专栏管理</a>
+		<a href="#" target="_blank" class="list-group-item list-group-item-hover">专栏管理</a>
 	</div>
 </div>
 <div class="" id="content-body">
@@ -175,7 +175,6 @@
 </div><label id="set_private_msg" class="checkbox_msg checkbox_msg_none" >已设为私密。</label>
         </div>
         <script type="text/javascript">
-        
         function set_private(){
         	if($("#set_private_checkbox").is(":checked")){
         		  $("#set_private_msg").removeClass("checkbox_msg_none");
@@ -189,8 +188,11 @@
         	var txtTitle=$('#txtTitle').val();//文章标题
         	var article_tag=$('#tagsinputval').val();//文章标签
         	var article_content=editor.txt.html();//文章内容
+        	var article_text = editor.txt.text();
         	var article_type=0;
         	var per_classify=$('#per_classify').val();//个人分类
+        	 // 获取编辑器区域完整html代码
+            
         	if($("#set_private_checkbox").is(":checked")){
         		article_type=0;
       	    }else{
@@ -198,43 +200,111 @@
       		    article_type=1;
       	    }
         	if(txtTitle==""||txtTitle==null){
-        		alert("qqqa");
-        		sweetAlert("哎呦……", "出错了！","error");
-        		alert("qqq");
+        		swal({ 
+        			  title: "请填写标题哟", 
+        			  type:"error",
+        			  text: "2秒后自动关闭。", 
+        			  timer: 2000, 
+        			  allowOutsideClick:true,
+        			  showConfirmButton: true 
+        			}); 
+        			
         		return false;
         	}
         	if(article_tag==""||article_tag==null){
+        		swal({ 
+      			  title: "请添加文章标签哟", 
+      			  type:"error",
+      			  text: "2秒后自动关闭。", 
+      			  timer: 2000, 
+      			  allowOutsideClick:true,
+      			  showConfirmButton: true 
+      			});
         		return false;
         	}
-        	if(article_content==""||article_content==null){
+        	if(article_text==""||article_text==null){
+        		swal({ 
+        			  title: "请填写文章内容哟", 
+        			  type:"error",
+        			  text: "2秒后自动关闭。", 
+        			  timer: 2000, 
+        			  allowOutsideClick:true,
+        			  showConfirmButton: true 
+        			});
         		return false;
         	}
         	if(per_classify==""||per_classify==null){
+        		swal({ 
+      			  title: "请填写个人分类哟", 
+      			  type:"error",
+      			  text: "2秒后自动关闭。", 
+      			  timer: 2000, 
+      			  allowOutsideClick:true,
+      			  showConfirmButton: true 
+      			});
         		return false;
         	}
-        	$.ajax({
-        		type: "POST",  
-        	    url:  basePath+"/home/addBlog.action",  
-        	    data:{articleName:txtTitle,
-        	    	articleLabel:article_tag,
-        	    	articleContent:article_content,
-        	    	articleType:article_type,
-        	    	sortArticleName:per_classify},//:txtTitle,articleLabel:article_tag,articleContent:article_content,articleType:article_type,sortArticleId:per_classify
-        	    dataType: 'json',
-        	    success: function(data){  
-        	        alert(data.msg);
-        	    },  
-        	    error: function(res){  
-        	       
-        	    }  
-        	});
+        	
+        			$.ajax({
+                		type: "POST",  
+                	    url:  basePath+"/home/addBlog.action",  
+                	    data:{articleName:txtTitle,
+                	    	articleLabel:article_tag,
+                	    	articleContent:article_content,
+                	    	articleType:article_type,
+                	    	sortArticleName:per_classify},//:txtTitle,articleLabel:article_tag,articleContent:article_content,articleType:article_type,sortArticleId:per_classify
+                	    dataType: 'json',
+                	    success: function(data){  
+                	    	//返回添加成功状态后返回到文章页
+                	    	if(data.msg==1){
+                	    		swal({ 
+                	      			  title: "添加成功！", 
+                	      			  type:"success",
+                	      			  text: "5秒后自动跳转。", 
+                	      			  timer: 5000, 
+                	      			  allowOutsideClick:false,
+                	      			  showConfirmButton: true 
+                	      			},function(){
+                	      				
+                	      			});
+                	    	}else{
+                	    		swal({ 
+                	      			  title: "添加失败！请重试", 
+                	      			  type:"error",
+                	      			  text: "2秒后自动关闭。", 
+                	      			  timer: 2000, 
+                	      			  allowOutsideClick:true,
+                	      			  showConfirmButton: true 
+                	      			});
+                	    	}
+                	        
+                	    },  
+                	    error: function(res){  
+                	       
+                	    }  
+                	});
+        		  
+        	
+        	
         }
+        </script>
+        <script type="text/javascript">
+        function testsweetalert(){
+        	var html = editor.$txt.html();
+            alert(html);
+            // 获取编辑器纯文本内容
+            
+            alert(text);
+            // 获取格式化后的纯文本
+            var formatText = editor.$txt.formatText();
+            alert(formatText);
+    	}
         </script>
      <div class="edit_button_div">  <input class="edit_button" type="button" onclick="javascript:addArticle();"  value="发布"/>
 				
 					<input class="edit_button" type="button" value="保存草稿"/>
 				
-					<input class="edit_button_return" type="button"  value="返回"/>
+					<input class="edit_button_return" type="button"  value="返回" onclick="javascript:testsweetalert();"/>
 					</div>
 					</form>
 					</div>

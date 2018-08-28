@@ -19,7 +19,7 @@ public class ArtcleSortServiceImpl implements ArticleSortService{
 		return artcle.getSortArticleId();
 	}
 	@Override
-	public int selectRepeat(int userid, String sortArticleName) throws Exception {
+	public Integer selectRepeat(int userid, String sortArticleName) throws Exception {
 		ArticleSort artcle=new ArticleSort();
 		artcle.setUserId(userid);
 		artcle.setSortArticleName(sortArticleName);

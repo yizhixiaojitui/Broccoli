@@ -31,7 +31,8 @@ public class IndexController {
 	@Autowired
 	private ArticleSortService articleSortService;
 
-	static Logger logger=Logger.getLogger(IndexController.class.getName());
+	static Logger logger = Logger.getLogger(IndexController.class.getName());
+
 	// 进入主页
 	@RequestMapping("/index")
 	public ModelAndView ShowBlog(HttpServletRequest request) {
@@ -61,28 +62,31 @@ public class IndexController {
 		modelAndView.setViewName("index4");
 		return modelAndView;
 	}
+
 	// 测试
-		@RequestMapping("/test2")
-		public ModelAndView test2(HttpServletRequest request,HttpSession session) throws Exception {
-			ModelAndView modelAndView = new ModelAndView();
-			modelAndView.setViewName("index3");
-			return modelAndView;
+	@RequestMapping("/test2")
+	public ModelAndView test2(HttpServletRequest request, HttpSession session) throws Exception {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("index3");
+		return modelAndView;
+	}
+
+	@RequestMapping("/test3")
+	public void test3(HttpServletRequest request, HttpSession session, String base64Data) throws Exception {
+		System.out.println(base64Data);
+		if (base64Data == null || "".equals(base64Data)) {
+			throw new Exception("上传失败，上传图片数据为空");
 		}
-		@RequestMapping("/test3")
-		public void test3(HttpServletRequest request,HttpSession session,String base64Data) throws Exception {
-			 System.out.println(base64Data);
-			 if(base64Data == null || "".equals(base64Data)){
-		            throw new Exception("上传失败，上传图片数据为空");
-		     }
-			String realName = UUID.randomUUID().toString() + ".jpg";
-			String realPath = session.getServletContext().getRealPath("/upload/image/u");
-			System.out.println(realPath+realName);
-			if(PhotoUtils.Base64ToImage(PhotoUtils.Base64ToData(base64Data), realPath+realName)) {
+		String realName = UUID.randomUUID().toString() + ".jpg";
+		String realPath = session.getServletContext().getRealPath("/upload/image/u");
+		System.out.println(realPath + realName);
+		if (PhotoUtils.Base64ToImage(PhotoUtils.Base64ToData(base64Data), realPath + realName)) {
 			System.out.println("添加成功！");
-			}else {
+		} else {
 			System.out.println("添加失败！");
-			}
 		}
+	}
+
 	@ResponseBody
 	@RequestMapping("/addBlog")
 	public Object addBlog(HttpSession session, HttpServletRequest request,
@@ -90,38 +94,37 @@ public class IndexController {
 		// @ModelAttribute("articleUtil") addArticleUtil articleUtil
 		Article article = new Article();
 		JSONObject json = new JSONObject();
-			article.setArticleIp(CusAccessObjectUtil.getIpAddress(request));
-			article.setArticleName(articleUtil.getArticleName());
-			article.setArticleLabel(articleUtil.getArticleLabel());
-			article.setArticleTime(new Date());
-			article.setArticleClick(0);
-			article.setArticleType(articleUtil.getArticleType());
-			article.setArticleContent(articleUtil.getArticleContent());
-			article.setArticleUp((byte) 0);
-			article.setArticleSupport((byte) 0);
-			article.setTypeId((byte) 0);
-			article.setUserId(10001);
+		article.setArticleIp(CusAccessObjectUtil.getIpAddress(request));
+		article.setArticleName(articleUtil.getArticleName());
+		article.setArticleLabel(articleUtil.getArticleLabel());
+		article.setArticleTime(new Date());
+		article.setArticleClick(0);
+		article.setArticleType(articleUtil.getArticleType());
+		article.setArticleContent(articleUtil.getArticleContent());
+		article.setArticleUp((byte) 0);
+		article.setArticleSupport((byte) 0);
+		article.setTypeId((byte) 0);
+		article.setUserId(10001);
 
-			// System.out.println(i);
-			try {
-				if (articleSortService.selectRepeat(article.getUserId(), articleUtil.getSortArticleName()) == 0) {
-					article.setSortArticleId(articleSortService.insert(article.getUserId(), articleUtil.getSortArticleName()));
-					if(articleService.insert(article)>0) {
-						
-						json.put("msg", 0);
-					}
-				} else {
-					json.put("msg", 1);
-				}
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		try {
+			//获取分类id
+			Integer sort_id = articleSortService.selectRepeat(article.getUserId(), articleUtil.getSortArticleName());
+			System.out.println("sort_id"+sort_id);
+			//判断获取id
+			if (sort_id ==null ||"".equals(sort_id)) {
+			// 个人分类不存在 插入
+			sort_id = articleSortService.insert(article.getUserId(), articleUtil.getSortArticleName());
 			}
-			
-		
+			article.setSortArticleId(sort_id);
+			articleService.insert(article);
+			json.put("msg", 1);
+
+		} catch (Exception e) {
+			json.put("msg", 0);
+			e.printStackTrace();
+		}
+
 		return json;
 	}
-		
-	
 
 }

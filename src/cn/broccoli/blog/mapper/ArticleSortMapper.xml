@@ -99,7 +99,7 @@
   </delete>
   <select id="selectRepeat" resultType="java.lang.Integer" parameterType="cn.broccoli.blog.po.ArticleSort" >
     select 
-    count(*)
+    sort_article_id
     from article_sort
     where user_id = #{userId,jdbcType=INTEGER} and sort_article_name=#{sortArticleName,jdbcType=VARCHAR};
   </select>
