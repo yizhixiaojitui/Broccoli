@@ -85,7 +85,6 @@
             var cas = $('#tailoringImg').cropper('getCroppedCanvas');//获取被裁剪后的canvas
             var base64url = cas.toDataURL('image/jpg'); //转换为base64地址形式
             $("#finalImg").prop("src",base64url);//显示为图片的形式
-            alert("点击进啦");
             userIconImageUpload(base64url);
             //关闭裁剪框
             
@@ -98,15 +97,32 @@
     }
 
     function userIconImageUpload(base64Data){
-    	alert("上传进了");
+    	
     	$.ajax({  
             type :'post',  
             url : basePath+"/home/test3.action",  
             data:{base64Data:base64Data},  
             //dataType : "html",  
             success : function(data) {
-            	alert("上传返回了");
-
+            	if(data.msg==1){
+            	swal({ 
+      			  title: "头像上传成功~", 
+      			  type:"success",
+      			  text: "2秒后自动关闭。", 
+      			  timer: 2000, 
+      			  allowOutsideClick:true,
+      			  showConfirmButton: true 
+      			});
+            	}else{
+            		swal({ 
+          			  title: "请刷新后尝试", 
+          			  type:"error",
+          			  text: "2秒后自动关闭。", 
+          			  timer: 2000, 
+          			  allowOutsideClick:true,
+          			  showConfirmButton: true 
+          			}); 
+            	}
             },  
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 // 状态码

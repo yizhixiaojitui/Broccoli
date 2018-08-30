@@ -11,13 +11,13 @@
 	padding: 5px 10px;
 	background: #C92027;
 	color: #fff;
-	border: solid 1px #8C85E6;
+	border: solid 1px #C92027;
 	border-radius: 3px;
 	font-size: 14px;
 }
 
 .l-btn:hover {
-	background: #8078e3;
+	background: #eb2024;
 	animation: anniu 1s infinite;
 }
 
@@ -182,14 +182,14 @@
 
 .replaceicon {
 	position: relative;
-	width: 102px;
-	height: 102px;
-    display: inline-block;
+	width: 152px;
+	height: 152px;
+    float: right;
 }
 
 .replaceicon-border {
-	width: 100px;
-	height: 100px;
+	width: 150px;
+	height: 150px;
 	border: solid 1px #555;
 	cursor: pointer;
 }
@@ -198,17 +198,17 @@
 	position: absolute;
 	text-align: center;
 	vertical-align: inherit;
-	width: 102px;
-	height: 102px;
+	width: 152px;
+	height: 152px;
 	background-color: rgba(0, 0, 0, 0.4);
 	cursor: pointer;
 	color:#FFF;
-	line-height: 102px;
+	line-height: 152px;
 }
 
 
 
 #finalImg {
-	width: 100px;
-	height: 100px;
+	width: 150px;
+	height: 150px;
 }

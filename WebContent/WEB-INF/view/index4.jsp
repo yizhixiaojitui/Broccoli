@@ -181,33 +181,41 @@ select {
 						<!--图片裁剪框 end-->
 
 					</div>
-					<div class="textWrap wordSumTotal">
+					<div class="textWrap wordSumTotal textPadding">
 						<label class="user-label">昵称：</label><input type="text" name=""
-							placeholder="昵称" maxlength="10">
+							placeholder="请输入昵称" maxlength="10">
 					</div>
 					<div class="textWrap wordSumTotal">
 						<label class="user-label textarea-label">介绍：</label>
 						<textarea name="" cols="" rows="" maxlength="100"></textarea>
 					</div>
-					<div id="date" class="textWrap">
+					<div id="date" class="textWrap textPadding">
 						<label class="user-label ">生日：</label><input type="text"
-							class="demo-input" placeholder="生日" id="birthday">
+							class="demo-input"  id="birthday">
 					</div>
 					<div class="textWrap">
-						<label class="user-label ">性别：</label> <label class="user-label ">
+						<label class="user-label ">性别：</label> <label class="sex_label ">
 							<i class='input_style radio_bg'><input type="radio"
 								name="hot" value="1"></i> 保密
-						</label> <label class="user-label "> <i
+						</label> <label class="sex_label"> <i
 							class='input_style radio_bg'><input type="radio" name="hot"
 								value="2"></i> 男
-						</label> <label class="user-label "> <i
+						</label> <label class="sex_label "> <i
 							class='input_style radio_bg'><input type="radio" name="hot"
 								value="3"></i> 女
 						</label>
 					</div>
-					<div class="textWrap">
+					<div class="textWrap textPadding">
 						<label class="user-label">邮箱：</label><input type="text" name=""
-							placeholder="邮箱">
+							placeholder="请填写邮箱">
+					</div>
+					<div class="textWrap textPadding">
+						<label class="user-label">毕业学校：</label><input type="text" name=""
+							placeholder="请填写毕业学校">
+					</div>
+					<div class="textWrap textPadding">
+						<label class="user-label">QQ：</label><input type="text" name=""
+							placeholder="请填写QQ">
 					</div>
 					<script>
 						lay('#version').html('-v' + laydate.v);
@@ -219,10 +227,9 @@ select {
 						});
 					</script>
 					<div class="edit_button_div">
-						<input class="edit_button" type="button"
-							onclick="javascript:addArticle();" value="发布" /> <input
-							class="edit_button" type="button" value="保存草稿" /> <input
-							class="edit_button_return" type="button" value="返回" />
+					<label class="l-btn cropper-reset-btn" onclick="javascript:addArticle();">保存</label>
+						
+						<label class="l-btn cropper-reset-btn">返回</label>
 					</div>
 				</form>
 			</div>

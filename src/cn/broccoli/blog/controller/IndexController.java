@@ -70,10 +70,11 @@ public class IndexController {
 		modelAndView.setViewName("index3");
 		return modelAndView;
 	}
-
+	@ResponseBody
 	@RequestMapping("/test3")
-	public void test3(HttpServletRequest request, HttpSession session, String base64Data) throws Exception {
-		System.out.println(base64Data);
+	public Object test3(HttpServletRequest request, HttpSession session, String base64Data) throws Exception {
+		
+		JSONObject json = new JSONObject();
 		if (base64Data == null || "".equals(base64Data)) {
 			throw new Exception("上传失败，上传图片数据为空");
 		}
@@ -81,10 +82,11 @@ public class IndexController {
 		String realPath = session.getServletContext().getRealPath("/upload/image/u");
 		System.out.println(realPath + realName);
 		if (PhotoUtils.Base64ToImage(PhotoUtils.Base64ToData(base64Data), realPath + realName)) {
-			System.out.println("添加成功！");
+			json.put("msg", 1);
 		} else {
-			System.out.println("添加失败！");
+			json.put("msg", 0);
 		}
+		return json;
 	}
 
 	@ResponseBody

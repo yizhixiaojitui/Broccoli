@@ -8242,7 +8242,7 @@ body.boxed .wrapper {
 
 .textWrap {
 	margin: 10px 0 20px;
-	    width: 370px;
+	    width:450px;
 }
 
 .textWrap input, .textWrap textarea {
@@ -8255,13 +8255,13 @@ body.boxed .wrapper {
 	padding-right: 40px;
 	line-height: 20px;
 	font-size: 14px;
-    width: 240px;
+    width: 290px;
 	color: #333;
 }
 
 .textWrap textarea {
 	height: 80px;
-	    width: 270px;
+	    width: 320px;
 }
 
 .textarea-label{
@@ -8270,8 +8270,21 @@ body.boxed .wrapper {
     height: 100%;
 }
 .user-label{
-	vertical-align: middle;
-    display: inline;
-   
+	display: inline-block;
     height: 100%;
+    text-align: right;
+    width: 70px;
+}
+.sex_label{
+	display: inline-block;
+    height: 100%;
+    text-align: right;
+    vertical-align: middle;
+}
+.textPadding input{
+	padding-right: 70px;
+}
+#user_edit{
+	margin-left: 20px;
+    width: 650px;
 }
