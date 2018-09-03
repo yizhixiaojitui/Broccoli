@@ -445,7 +445,7 @@ function pagingConstruct(paging){
         	$("rownum").html(data.pageCount);
         	var pageDivInnerHTML = "";
         	for(var p in results){
-        		pageDivInnerHTML+='<div class="block_home_post" ><div class="pic"> <a href="'+basePath+'/blog/query.action?bid='+results[p].articleId+'" class="w_hover"> <img src="'+basePath+'/images/'+results[p].userImageUrl+'" alt="'+results[p].articleName+'" /> <span></span> </a> </div><div class="text"><p class="title"><a href="'+basePath+'/blog/query.action?bid='+results[p].articleId+'">'+results[p].articleName+'</a></p><div class="date"><p>'+results[p].articleTime+'</p></div><div class="icons"><ul><li><a href="'+basePath+'/blog/query.action?bid='+results[p].articleId+'" class="views">'+results[p].articleClick+'</a></li></ul> </div></div></div>';
+        		pageDivInnerHTML+='<div class="block_home_post" ><div class="pic"> <a href="'+basePath+'/home/query.action?bid='+results[p].articleId+'" class="w_hover"> <img src="'+basePath+'/images/'+results[p].userImageUrl+'" alt="'+results[p].articleName+'" /> <span></span> </a> </div><div class="text"><p class="title"><a href="'+basePath+'/home/query.action?bid='+results[p].articleId+'">'+results[p].articleName+'</a></p><div class="date"><p>'+formatDateTime(results[p].articleTime)+'</p></div><div class="icons"><ul><li><a href="'+basePath+'/home/query.action?bid='+results[p].articleId+'" class="views">'+results[p].articleClick+'</a></li></ul> </div></div></div>';
         		
         	}
         	$("#newblogpage").html(pageDivInnerHTML);  
@@ -453,6 +453,19 @@ function pagingConstruct(paging){
         });
 	
 }  
+function formatDateTime(inputTime) {  
+	    var date = new Date(inputTime);
+	    var y = date.getFullYear();  
+	    var m = date.getMonth() + 1;  
+	    m = m < 10 ? ('0' + m) : m;  
+	    var d = date.getDate();  
+	    d = d < 10 ? ('0' + d) : d;  
+	    var h = date.getHours();
+	    h = h < 10 ? ('0' + h) : h;
+	    var minute = date.getMinutes();  
+	    minute = minute < 10 ? ('0' + minute) : minute;
+	    return y + '-' + m + '-' + d+' '+h+':'+minute;  
+	};
 
 function pagingNum(paging){
 	var total =$("#rownum").html();		 

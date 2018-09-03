@@ -1,5 +1,6 @@
 package cn.broccoli.blog.controller;
 
+
 import java.util.Date;
 import java.util.UUID;
 
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import cn.broccoli.blog.po.Article;
+import cn.broccoli.blog.po.BlogInfo;
 import cn.broccoli.blog.service.ArticleService;
 import cn.broccoli.blog.service.ArticleSortService;
 import cn.broccoli.blog.util.CusAccessObjectUtil;
@@ -44,6 +46,24 @@ public class IndexController {
 		return modelAndView;
 	}
 
+	@RequestMapping("/query")//根据ID查询文章，并跳转到文章详情页面
+	public ModelAndView getBlogInfo(HttpServletRequest request,String bid) {
+		ModelAndView modelAndView=new ModelAndView();
+		BlogInfo info=new BlogInfo();
+		try {
+			info=articleService.getBlogInfoById(Integer.parseInt(bid));
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(info.getSortArticleName()+"嗨");
+		request.setAttribute("blog", info);
+		modelAndView.setViewName("index2");
+		return modelAndView;
+	}
 	// 测试json
 	@ResponseBody
 	@RequestMapping("/json")

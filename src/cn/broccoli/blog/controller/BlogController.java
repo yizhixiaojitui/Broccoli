@@ -15,22 +15,5 @@ import cn.broccoli.blog.service.ArticleService;
 public class BlogController {
 	@Autowired
 	private ArticleService articleService;
-	@RequestMapping("/query")//根据ID查询文章，并跳转到文章详情页面
-	public ModelAndView getBlogInfo(HttpServletRequest request,String bid) {
-		ModelAndView modelAndView=new ModelAndView();
-		BlogInfo info=new BlogInfo();
-		try {
-			info=articleService.getBlogInfoById(Integer.parseInt(bid));
-		} catch (NumberFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println(info.getSortArticleName()+"嗨");
-		request.setAttribute("blog", info);
-		modelAndView.setViewName("index2");
-		return modelAndView;
-	}
+	
 }

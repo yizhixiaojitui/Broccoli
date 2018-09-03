@@ -42,7 +42,7 @@
     <result column="article_label" property="articleLabel"/> 
   </resultMap>
   <select id="getByExampleNewBlogItems" parameterType="java.lang.Integer" resultMap="newBlog">
-  SELECT A.article_id,A.article_name,DATE_FORMAT(A.article_time,'%Y-%m-%d %H:%i:%s') as article_time,U.user_nikename,A.article_click,AR.sort_article_name,U.user_image_url,a.article_label FROM (article A inner join user U on A.user_id=U.user_id)
+  SELECT A.article_id,A.article_name,A.article_time ,U.user_nikename,A.article_click,AR.sort_article_name,U.user_image_url,a.article_label FROM (article A inner join user U on A.user_id=U.user_id)
    INNER JOIN article_sort AR ON A.user_id=AR.user_id WHERE A.article_type=1 GROUP BY A.article_id ORDER BY A.article_time DESC limit #{pageIndex,jdbcType=INTEGER},6;
   </select>
   <select id="getBlogRowCount" resultType="java.lang.Integer">
