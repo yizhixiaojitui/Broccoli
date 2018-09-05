@@ -44,6 +44,11 @@ public class UserServiceImpl implements UserService{
 	public int LoginByTestUser(String username) throws Exception {
 		// TODO Auto-generated method stub
 		return userMapper.LoginByTestUser(username);
+	}
+	@Override
+	public int updateUserImage(Integer uid, String userImage) throws Exception {
+		// TODO Auto-generated method stub
+		return userMapper.updateUserImage(uid, userImage);
 	} 
 
 }

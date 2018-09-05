@@ -18,4 +18,6 @@ public interface UserService {
 	public int LoginByTestUser(String username) throws Exception;
 	//注册功能
 	public int insertUser(User user) throws Exception;
+	
+	int updateUserImage(Integer uid,String userImage) throws Exception;
 }

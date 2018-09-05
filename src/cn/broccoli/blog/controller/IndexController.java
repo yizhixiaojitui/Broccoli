@@ -19,6 +19,7 @@ import cn.broccoli.blog.po.Article;
 import cn.broccoli.blog.po.BlogInfo;
 import cn.broccoli.blog.service.ArticleService;
 import cn.broccoli.blog.service.ArticleSortService;
+import cn.broccoli.blog.service.UserService;
 import cn.broccoli.blog.util.CusAccessObjectUtil;
 import cn.broccoli.blog.util.Page;
 import cn.broccoli.blog.util.PhotoUtils;
@@ -61,7 +62,7 @@ public class IndexController {
 		}
 		System.out.println(info.getSortArticleName()+"嗨");
 		request.setAttribute("blog", info);
-		modelAndView.setViewName("index2");
+		modelAndView.setViewName("article-info");
 		return modelAndView;
 	}
 	// 测试json
@@ -76,38 +77,16 @@ public class IndexController {
 	}
 
 	// 测试
-	@RequestMapping("/test")
-	public ModelAndView test(HttpServletRequest request) throws Exception {
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("index4");
-		return modelAndView;
-	}
+	
 
 	// 测试
 	@RequestMapping("/test2")
 	public ModelAndView test2(HttpServletRequest request, HttpSession session) throws Exception {
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("index3");
+		modelAndView.setViewName("article-editors");
 		return modelAndView;
 	}
-	@ResponseBody
-	@RequestMapping("/test3")
-	public Object test3(HttpServletRequest request, HttpSession session, String base64Data) throws Exception {
-		
-		JSONObject json = new JSONObject();
-		if (base64Data == null || "".equals(base64Data)) {
-			throw new Exception("上传失败，上传图片数据为空");
-		}
-		String realName = UUID.randomUUID().toString() + ".jpg";
-		String realPath = session.getServletContext().getRealPath("/upload/image/u");
-		System.out.println(realPath + realName);
-		if (PhotoUtils.Base64ToImage(PhotoUtils.Base64ToData(base64Data), realPath + realName)) {
-			json.put("msg", 1);
-		} else {
-			json.put("msg", 0);
-		}
-		return json;
-	}
+
 
 	@ResponseBody
 	@RequestMapping("/addBlog")

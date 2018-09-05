@@ -18,8 +18,8 @@
 					<div class="block_top_menu" id="user_top">
 						<ul>
 							<c:if test="${user !='' && user !=null}">
-								<li>Hi,</li>
-								<li class="current"><a href="#">${user.userName } </a></li>
+								
+								<li class="current"><span>Hi,</span><a href="${pageContext.request.contextPath }/user/details.action">${user.userName } </a></li>
 								<li><a href="javascript:void(0);" onclick="exitlogin();">退出
 								</a></li>
 							</c:if>

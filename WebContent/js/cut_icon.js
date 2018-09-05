@@ -100,7 +100,7 @@
     	
     	$.ajax({  
             type :'post',  
-            url : basePath+"/home/test3.action",  
+            url : basePath+"/user/userImageUpdate.action",  
             data:{base64Data:base64Data},  
             //dataType : "html",  
             success : function(data) {

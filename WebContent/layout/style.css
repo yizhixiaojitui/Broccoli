@@ -2834,7 +2834,6 @@ header {
 .main_content .info .category a {
 	font-size: 9px;
 	color: #719eae;
-	text-transform: uppercase;
 }
 
 .main_content .info .views {
@@ -8287,4 +8286,8 @@ body.boxed .wrapper {
 #user_edit{
 	margin-left: 20px;
     width: 650px;
+}
+.block_single_post .about_author .photo a img{
+	width: 60px;
+    height: 60px;
 }

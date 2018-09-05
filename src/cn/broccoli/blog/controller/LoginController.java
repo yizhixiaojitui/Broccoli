@@ -61,12 +61,9 @@ public class LoginController {
 	@ResponseBody
 	public Object loginTestUser(HttpServletResponse response ,String username) throws Exception {
 		JSONObject resultObject = new JSONObject();
-		resultObject.put("msg", userService.LoginByTestUser(username));
-	
+		resultObject.put("msg", userService.LoginByTestUser(username));	
 		return resultObject;
 	}
-	
-    
 	/**
 	 * 登录逻辑
 	 */
