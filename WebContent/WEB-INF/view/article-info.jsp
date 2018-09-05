@@ -103,7 +103,7 @@
 							</h4>
 
 							<div class="photo">
-								<a href="#"><img src="${pageContext.request.contextPath }/images/${blog.userImageUrl}" alt=""></a>
+								<a href="#"><img src="${pageContext.request.contextPath }/upload/image/${blog.userImageUrl}" alt=""></a>
 							</div>
 							<div class="bio">
 								<p class="name">
@@ -715,149 +715,12 @@
 		</div>
 		<!-- CONTENT END -->
 		<footer id="bodyfooter" style="display:none">
-		<div id="footer" style="display: none">
-			<section class="top">
-			<div class="inner">
-				<div id="logo_bottom">
-					<a href="index.html"><img
-						src="${pageContext.request.contextPath }/images/logo_bottom.png"
-						alt=""></a>
-				</div>
-				<div class="block_to_top">
-					<a href="#"><font style="vertical-align: inherit;"><font
-							style="vertical-align: inherit;">回到顶部</font></font></a>
-				</div>
-			</div>
-			</section>
-			<section class="bottom">
-			<div class="inner">
-				<div class="fr">
-					<div class="block_menu_footer">
-						<ul>
-							<li><a href="business.html"><font
-									style="vertical-align: inherit;"><font
-										style="vertical-align: inherit;">主页</font></font></a></li>
-							<li><a href="technology.html"><font
-									style="vertical-align: inherit;"><font
-										style="vertical-align: inherit;">相册</font></font></a></li>
-							<li><a href="education.html"><font
-									style="vertical-align: inherit;"><font
-										style="vertical-align: inherit;">说说</font></font></a></li>
-							<li><a href="media.html"><font
-									style="vertical-align: inherit;"><font
-										style="vertical-align: inherit;">Blog</font></font></a></li>
-						</ul>
-					</div>
-					<div class="block_social_footer">
-						<ul>
-							<li><a href="#" class="fb"><font
-									style="vertical-align: inherit;"><font
-										style="vertical-align: inherit;">Facebook的</font></font></a></li>
-							<li><a href="#" class="tw"><font
-									style="vertical-align: inherit;"><font
-										style="vertical-align: inherit;">推特</font></font></a></li>
-							<li><a href="#" class="rss"><font
-									style="vertical-align: inherit;"><font
-										style="vertical-align: inherit;">RSS</font></font></a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="block_copyrights">
-					<p>
-						<font style="vertical-align: inherit;"><font
-							style="vertical-align: inherit;">Copyright © 2018
-								xiaojitui. All Rights Reserved</font></font>
-					</p>
-				</div>
-			</div>
-			</section>
-		</div>
+		<jsp:include page="inc/footer.jsp" />
 		</footer>
 		<!-- FOOTER END -->
 
 	</div>
-	<div class="login_box">
-		<a href="javascript:void(0);" onclick="login_box_close();"
-			class="close">Close</a>
-		<div id="landing" class="landing">登录</div>
-		<div id="registered" class="registered">注册</div>
-		<div class="fix"></div>
-		<form id="loginform">
-			<div id="landing-content">
-				<div id="photo">
-					<img
-						src="${pageContext.request.contextPath }/images/ava_default_3.jpg" />
-				</div>
-				<div class="inp">
-					<input type="text" id="username" placeholder="用户名" />
-				</div>
-				<div class="inp">
-					<input type="password" id="password" placeholder="密码" />
-				</div>
-				<div class="captcha">
-					<div class="captcha_input" style="float: left;">
-						<input type="text" placeholder="验证码" id="user_input_verifyCode" />
-					</div>
-					<div class="captcha_img" style="float: left;">
-						<img class="captcha2"
-							src="${pageContext.request.contextPath }/user/getVerifyCode.action"
-							id="verifyCodeImage" onclick="javascript:changeImage();"
-							title="点击图片更换验证码" />
-					</div>
-				</div>
-				<div class="login" onclick="javascript:login();">登录</div>
-				<div id="bottom">
-					<span id="registeredtxt"><a href="javascript:void(0);"
-						onclick="on_regist();">还没有账号？</a></span><span id="forgotpassword"><a
-						href="javascript:void(0);">忘记密码?</a></span>
-				</div>
-				<div id="msg">
-					<span id="msg_txt"></span>
-				</div>
-			</div>
-		</form>
-		<form id="regist_form">
-			<div id="registered-content">
-				<div class="inp">
-					<input type="text" id="nikename" name="nikename"
-						placeholder="请输入昵称" />
-				</div>
-				<div class="inp">
-					<input type="text" name="username" id="rusername"
-						placeholder="请输入用户名" />
-				</div>
-				<div class="inp">
-					<input type="password" id="rpassword" name="password"
-						placeholder="请输入密码" />
-				</div>
-				<div class="inp">
-					<input type="password" id="repassword" placeholder="请再次输入密码" />
-				</div>
-				<div class="inp">
-					<input type="text" id="remail" name="email" placeholder="电子邮箱" />
-				</div>
-				<div class="inp">
-					<input type="text" id="code" name="code" placeholder="邀请码" />
-				</div>
-				<div class="captcha">
-					<div class="captcha_input" style="float: left;">
-						<input type="text" placeholder="验证码" name="verifyCode"
-							id="re_user_input_verifyCode" />
-					</div>
-					<div class="captcha_img" style="float: left;">
-						<img class="captcha2"
-							src="${pageContext.request.contextPath }/user/getVerifyCode.action"
-							id="rverifyCodeImage" onclick="javascript:changeImage2();"
-							title="点击图片更换验证码" />
-					</div>
-				</div>
-				<div class="login" onclick="javascript:regist();">立即注册</div>
-				<div id="msg">
-					<span id="regist_msg_txt"></span>
-				</div>
-			</div>
-		</form>
-	</div>
+	
 
 </body>
 </html>
