@@ -44,6 +44,25 @@ public class UserController {
 		modelAndView.setViewName("user-details");
 		return modelAndView;
 	}
+    //修改用户资料
+    @RequestMapping("/update_userinfo")
+	public Object update_userinfo(HttpSession session,HttpServletRequest request) throws Exception {
+    	JSONObject json = new JSONObject();
+		User user=(User) session.getAttribute("user");
+		user.setUserNikename(request.getParameter("userNikename"));
+		user.setUserDescription(request.getParameter("userDescription"));
+		user.setUserEmail(request.getParameter("userEmail"));
+		user.setUserQq(request.getParameter("userQq"));
+		user.setUserSchool(request.getParameter("userSchool"));
+		user.setUserSex(request.getParameter("userSex"));
+		if(userService.updateUserInfo(user)>0) {
+			json.put("msg", 1);
+		}else {
+			json.put("msg", 0);
+		}
+		
+		return json;
+	}
     //修改用户头像
 	@ResponseBody
 	@RequestMapping("/userImageUpdate")

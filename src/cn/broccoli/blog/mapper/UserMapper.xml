@@ -139,9 +139,22 @@
     where user_nikename = #{nikename,jdbcType=VARCHAR}
   </select>
 
+ <update id="updateUserInfo" parameterType="cn.broccoli.blog.po.User">
+  update user set 
+  user_nikename = #{userNikename,jdbcType=VARCHAR},
+  user_description = #{userDescription,jdbcType=VARCHAR},
+  user_birthday = #{userBirthday,jdbcType=TIMESTAMP},
+  user_sex = #{userSex,jdbcType=VARCHAR},
+  user_email = #{userEmail,jdbcType=VARCHAR},
+  user_school = #{userSchool,jdbcType=VARCHAR},
+  user_qq = #{userQq,jdbcType=VARCHAR}
+  where user_id = #{userId,jdbcType=INTEGER}
+  </update>
+  
   <update id="updateUserImage" >
   update user set user_image_url=#{1} where user_id=#{0}
   </update>
+  
   <insert id="insertUser" useGeneratedKeys="true" keyProperty="userId"  parameterType="cn.broccoli.blog.po.User">
   insert into User(group_id,user_name, user_nikename,user_pwd,user_email,user_last_login_ip,user_image_url,user_register_time,user_register_ip) 
   values(#{groupId,jdbcType=INTEGER},#{userName,jdbcType=VARCHAR}, #{userNikename,jdbcType=VARCHAR},
@@ -555,6 +568,10 @@
     </set>
     where user_id = #{userId,jdbcType=INTEGER}
   </update>
+  
+  
+  
+ 
   <update id="updateByPrimaryKey" parameterType="cn.broccoli.blog.po.User" >
     update user
     set group_id = #{groupId,jdbcType=INTEGER},

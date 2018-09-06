@@ -63,7 +63,7 @@ select {
 			</div>
 
 			<div class="" id="content-body">
-				<form action="" id="user_edit" method="post">
+				<form  id="userinfo_link_from" >
 					<div class="replaceicon">
 						<div id="replaceImg" class="replaceicon-msg" style="display: none">更换头像</div>
 						<div class="replaceicon-border">
@@ -107,44 +107,46 @@ select {
 						<!--图片裁剪框 end-->
 
 					</div>
+					
 					<div class="textWrap wordSumTotal textPadding">
-						<label class="user-label">昵称：</label><input type="text" name="nikename"
+						<label class="user-label">昵称：</label><input type="text" name="userNikename"
 							placeholder="请输入昵称" maxlength="10" value="${user.userNikename }">
 					</div>
 					<div class="textWrap wordSumTotal">
 						<label class="user-label textarea-label">介绍：</label>
-						<textarea name="description" cols="" rows="" value="${user.userDescription }" maxlength="100"></textarea>
+						<textarea name="description" cols="" rows="" value="${user.userDescription }" maxlength="100" name="userDescription"></textarea>
 					</div>
 					<div id="date" class="textWrap textPadding">
 						<label class="user-label ">生日：</label><input type="text"
-							class="demo-input"  id="birthday"  value="<fmt:formatDate value="${user.userBirthday }" pattern="yyyy-MM-dd" />">
+							class="demo-input"  id="birthday" name="userBirthday" value="<fmt:formatDate value="${user.userBirthday }" pattern="yyyy-MM-dd" />">
 					</div>
 					<div class="textWrap">
 					   
 						<label class="user-label ">性别：</label> <label class="sex_label ">
 							<i class='input_style radio_bg <c:if test="${user.userSex==10000 }">radio_bg_check </c:if>'><input type="radio"
-								name="hot" value="1" <c:if test="${user.userSex==10000 }">checked</c:if>></i> 保密
+								name="userSex" value="1" <c:if test="${user.userSex==10000 }">checked</c:if>></i> 保密
 						</label> <label class="sex_label"> <i
-							class='input_style radio_bg <c:if test="${user.userSex==10001 }">radio_bg_check </c:if>'><input type="radio" name="hot"
+							class='input_style radio_bg <c:if test="${user.userSex==10001 }">radio_bg_check </c:if>'><input type="radio" name="userSex"
 								value="2" <c:if test="${user.userSex==10001 }">checked</c:if>></i> 男
 						</label> 
 						<label class="sex_label "> <i
-							class='input_style radio_bg <c:if test="${user.userSex==10002 }">radio_bg_check </c:if>'><input type="radio" name="hot"
+							class='input_style radio_bg <c:if test="${user.userSex==10002 }">radio_bg_check </c:if>'><input type="radio" name="userSex"
 								value="3" <c:if test="${user.userSex==10002 }">checked</c:if>></i> 女
 						</label>
 					</div>
 					<div class="textWrap textPadding">
-						<label class="user-label">邮箱：</label><input type="text" name=""
+						<label class="user-label">邮箱：</label><input type="text" name="userEmail"
 							placeholder="请填写邮箱" value="${user.userEmail }">
 					</div>
 					<div class="textWrap textPadding">
-						<label class="user-label">毕业学校：</label><input type="text" name=""
+						<label class="user-label">毕业学校：</label><input type="text" name="userSchool"
 							placeholder="请填写毕业学校" value="${user.userSchool }">
 					</div>
 					<div class="textWrap textPadding">
-						<label class="user-label">QQ：</label><input type="text" name=""
+						<label class="user-label">QQ：</label><input type="text" name="userQq"
 							placeholder="请填写QQ" value="${user.userQq }">
 					</div>
+					
 					<script>
 						lay('#version').html('-v' + laydate.v);
 
@@ -155,7 +157,7 @@ select {
 						});
 					</script>
 					<div class="edit_button_div">
-					<label class="l-btn cropper-reset-btn" onclick="javascript:addArticle();">保存</label>
+					<label class="l-btn cropper-reset-btn" onclick="update_user_info();">保存</label>
 						
 						<label class="l-btn cropper-reset-btn">返回</label>
 					</div>

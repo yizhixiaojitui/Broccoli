@@ -44,4 +44,6 @@ public interface UserMapper {
 	int insertUser(User user);
 	//修改用户头像
 	int updateUserImage(Integer uid,String userImage);
+	
+	int updateUserInfo(User user);
 }

@@ -20,4 +20,6 @@ public interface UserService {
 	public int insertUser(User user) throws Exception;
 	
 	int updateUserImage(Integer uid,String userImage) throws Exception;
+	
+	int updateUserInfo(User user) throws Exception;
 }

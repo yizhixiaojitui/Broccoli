@@ -49,6 +49,11 @@ public class UserServiceImpl implements UserService{
 	public int updateUserImage(Integer uid, String userImage) throws Exception {
 		// TODO Auto-generated method stub
 		return userMapper.updateUserImage(uid, userImage);
+	}
+	@Override
+	public int updateUserInfo(User user) throws Exception {
+		// TODO Auto-generated method stub
+		return userMapper.updateUserInfo(user);
 	} 
 
 }

@@ -498,4 +498,36 @@ function pagingNum(paging){
     $("#pagingDiv").html(pagingDivInnerHTML);  
 }
 
-
+function update_user_info(paging){  
+	pagingNum(paging);
+	$.ajax({  
+        type :'post',  
+        url :basePath+"/user/update_userinfo.action",
+        data :$("#userinfo_link_from").serialize(),
+        dataType : "json",  
+        success : function(data) {
+        	if(data.msg==1){
+            	swal({ 
+      			  title: "资料修改成功~", 
+      			  type:"success",
+      			  text: "2秒后自动关闭。", 
+      			  timer: 2000, 
+      			  allowOutsideClick:true,
+      			  showConfirmButton: true 
+      			});
+            	}else{
+            		swal({ 
+          			  title: "请刷新后尝试", 
+          			  type:"error",
+          			  text: "2秒后自动关闭。", 
+          			  timer: 2000, 
+          			  allowOutsideClick:true,
+          			  showConfirmButton: true 
+          			}); 
+            	}
+        },error: function () {
+        
+        }
+        });
+	
+}
