@@ -3807,7 +3807,6 @@ header {
 
 .block_home_post .pic {
 	margin-right: 12px;
-	padding-top: 4px;
 	float: left;
 }
 
@@ -3823,6 +3822,8 @@ header {
 
 .block_home_post .pic img {
 	border: 1px solid #ffffff;
+	height:50px;
+	width:50px;
 }
 
 .block_home_post .text {

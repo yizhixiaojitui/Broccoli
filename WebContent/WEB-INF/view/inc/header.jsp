@@ -20,7 +20,7 @@
 							<c:if test="${user !='' && user !=null}">
 								
 								<li class="current"><span>Hi,</span><a href="${pageContext.request.contextPath }/user/details.action">${user.userName } </a></li>
-								<li><a href="javascript:void(0);" onclick="exitlogin();">退出
+								<li><a href="${pageContext.request.contextPath }/user/exitLogin.action">退出
 								</a></li>
 							</c:if>
 							<c:if test="${user ==''|| user ==null}">

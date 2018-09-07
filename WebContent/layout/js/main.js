@@ -445,7 +445,7 @@ function pagingConstruct(paging){
         	$("rownum").html(data.pageCount);
         	var pageDivInnerHTML = "";
         	for(var p in results){
-        		pageDivInnerHTML+='<div class="block_home_post" ><div class="pic"> <a href="'+basePath+'/home/query.action?bid='+results[p].articleId+'" class="w_hover"> <img src="'+basePath+'/images/'+results[p].userImageUrl+'" alt="'+results[p].articleName+'" /> <span></span> </a> </div><div class="text"><p class="title"><a href="'+basePath+'/home/query.action?bid='+results[p].articleId+'">'+results[p].articleName+'</a></p><div class="date"><p>'+formatDateTime(results[p].articleTime)+'</p></div><div class="icons"><ul><li><a href="'+basePath+'/home/query.action?bid='+results[p].articleId+'" class="views">'+results[p].articleClick+'</a></li></ul> </div></div></div>';
+        		pageDivInnerHTML+='<div class="block_home_post" ><div class="pic"> <a href="'+basePath+'/home/query.action?bid='+results[p].articleId+'" class="w_hover"> <img src="'+basePath+'/upload/image/'+results[p].userImageUrl+'" alt="'+results[p].articleName+'" /> <span></span> </a> </div><div class="text"><p class="title"><a href="'+basePath+'/home/query.action?bid='+results[p].articleId+'">'+results[p].articleName+'</a></p><div class="date"><p>'+formatDateTime(results[p].articleTime)+'</p></div><div class="icons"><ul><li><a href="'+basePath+'/home/query.action?bid='+results[p].articleId+'" class="views">'+results[p].articleClick+'</a></li></ul> </div></div></div>';
         		
         	}
         	$("#newblogpage").html(pageDivInnerHTML);  
@@ -498,14 +498,15 @@ function pagingNum(paging){
     $("#pagingDiv").html(pagingDivInnerHTML);  
 }
 
-function update_user_info(paging){  
-	pagingNum(paging);
+function update_user_info(){  
+	alert($("#userinfo_link_from").serialize());
 	$.ajax({  
         type :'post',  
         url :basePath+"/user/update_userinfo.action",
         data :$("#userinfo_link_from").serialize(),
         dataType : "json",  
         success : function(data) {
+        	 
         	if(data.msg==1){
             	swal({ 
       			  title: "资料修改成功~", 
@@ -517,16 +518,22 @@ function update_user_info(paging){
       			});
             	}else{
             		swal({ 
-          			  title: "请刷新后尝试", 
+          			  title: "请刷新后尝试~", 
           			  type:"error",
-          			  text: "2秒后自动关闭。", 
-          			  timer: 2000, 
-          			  allowOutsideClick:true,
+          			  text: "点击确定刷新页面后重新尝试~", 
           			  showConfirmButton: true 
+          			},function(){
+          				window.location.reload()
           			}); 
             	}
-        },error: function () {
+        },error: function(XMLHttpRequest, textStatus, errorThrown,data) {
         
+			// 状态码
+			console.log(XMLHttpRequest.status);
+			// 状态
+			console.log(XMLHttpRequest.readyState);
+			// 错误信息
+			console.log(textStatus);
         }
         });
 	

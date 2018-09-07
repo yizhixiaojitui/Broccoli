@@ -68,6 +68,7 @@ function login() {
 
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
+		
 			// 状态码
 			console.log(XMLHttpRequest.status);
 			// 状态
@@ -189,7 +190,7 @@ function exitlogin() {
 		url : basePath + "/user/exitLogin.action",
 		// dataType : "html",
 		success : function(data) {
-			window.location.replace(basePath + "/user/index.action");
+			window.location.replace(basePath + "/home/index.action");
 		}
 	});
 

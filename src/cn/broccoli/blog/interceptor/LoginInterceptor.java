@@ -1,10 +1,14 @@
 package cn.broccoli.blog.interceptor;
 
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+
+import net.sf.json.JSONObject;
 
 public class LoginInterceptor implements HandlerInterceptor{
 
@@ -21,7 +25,7 @@ public class LoginInterceptor implements HandlerInterceptor{
      */  
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-
+	
 		Object user = request.getSession().getAttribute("user");
 		 if (user == null) {
 	            System.out.println("尚未登录，调到登录页面");
@@ -52,6 +56,12 @@ public class LoginInterceptor implements HandlerInterceptor{
 		System.out.println("postHandle");
 		
 	}
-
+	public boolean isAjaxRequest(HttpServletRequest request) { 
+        String header = request.getHeader("X-Requested-With"); 
+        if (header != null && "XMLHttpRequest".equals(header)) 
+            return true; 
+        else 
+            return false; 
+    }
 
 }

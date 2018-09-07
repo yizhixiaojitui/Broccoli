@@ -50,10 +50,10 @@ select {
 				<div class="list-group-title list-group-item">内容</div>
 				<div class="list-group">
 					<a href="#" class="list-group-item active">文章管理</a> <a href="#"
-						target="_blank" class="list-group-item none">专栏管理</a> <a href="#"
-						target="_blank" class="list-group-item none">专栏管理</a> <a href="#"
-						target="_blank" class="list-group-item none">专栏管理</a> <a href="#"
-						target="_blank" class="list-group-item none">专栏管理</a>
+						target="_blank" class="list-group-item list-group-item-hover">专栏管理</a> <a href="#"
+						target="_blank" class="list-group-item list-group-item-hover">专栏管理</a> <a href="#"
+						target="_blank" class="list-group-item list-group-item-hover">专栏管理</a> <a href="#"
+						target="_blank" class="list-group-item list-group-item-hover">专栏管理</a>
 				</div>
 				<div class="list-group-title list-group-item">内容</div>
 				<div class="list-group">
@@ -114,7 +114,7 @@ select {
 					</div>
 					<div class="textWrap wordSumTotal">
 						<label class="user-label textarea-label">介绍：</label>
-						<textarea name="description" cols="" rows="" value="${user.userDescription }" maxlength="100" name="userDescription"></textarea>
+						<textarea name="userDescription" cols="" rows=""  maxlength="100" name="userDescription">${user.userDescription }</textarea>
 					</div>
 					<div id="date" class="textWrap textPadding">
 						<label class="user-label ">生日：</label><input type="text"
@@ -124,14 +124,14 @@ select {
 					   
 						<label class="user-label ">性别：</label> <label class="sex_label ">
 							<i class='input_style radio_bg <c:if test="${user.userSex==10000 }">radio_bg_check </c:if>'><input type="radio"
-								name="userSex" value="1" <c:if test="${user.userSex==10000 }">checked</c:if>></i> 保密
+								name="userSex" value="10000" <c:if test="${user.userSex==10000 }">checked</c:if>></i> 保密
 						</label> <label class="sex_label"> <i
 							class='input_style radio_bg <c:if test="${user.userSex==10001 }">radio_bg_check </c:if>'><input type="radio" name="userSex"
-								value="2" <c:if test="${user.userSex==10001 }">checked</c:if>></i> 男
+								value="10001" <c:if test="${user.userSex==10001 }">checked</c:if>></i> 男
 						</label> 
 						<label class="sex_label "> <i
 							class='input_style radio_bg <c:if test="${user.userSex==10002 }">radio_bg_check </c:if>'><input type="radio" name="userSex"
-								value="3" <c:if test="${user.userSex==10002 }">checked</c:if>></i> 女
+								value="10002" <c:if test="${user.userSex==10002 }">checked</c:if>></i> 女
 						</label>
 					</div>
 					<div class="textWrap textPadding">

@@ -110,9 +110,9 @@
            
           <div class="block_home_post" >
             
-              <div class="pic"> <a href="${pageContext.request.contextPath }/home/query.action?bid=${result.articleId}" class="w_hover"> <img src="${pageContext.request.contextPath }/images/${result.userImageUrl }" alt="${result.articleName }" /> <span></span> </a> </div>
+              <div class="pic"> <a href="${pageContext.request.contextPath }/home/query.action?bid=${result.articleId}" class="w_hover"> <img src="${pageContext.request.contextPath }/upload/image/${result.userImageUrl }" alt="${result.articleName }" /> <span></span> </a> </div>
               <div class="text">
-                <p class="title"><a href="${pageContext.request.contextPath }/home/query.action?bid=${result.articleId}">${result.articleName }</a></p>
+                <p class="title">${result.articleName }</p>
                 <div class="date">
                   <p><fmt:formatDate value="${result.articleTime }" pattern="yyyy-MM-dd HH:mm" /></p>
                 </div>

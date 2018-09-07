@@ -45,11 +45,15 @@ public class UserController {
 		return modelAndView;
 	}
     //修改用户资料
+    @ResponseBody
     @RequestMapping("/update_userinfo")
 	public Object update_userinfo(HttpSession session,HttpServletRequest request) throws Exception {
     	JSONObject json = new JSONObject();
+    	
+    	String nikename=request.getParameter("userNikename");
+    	logger.info("nikename"+nikename);
 		User user=(User) session.getAttribute("user");
-		user.setUserNikename(request.getParameter("userNikename"));
+		user.setUserNikename(nikename);
 		user.setUserDescription(request.getParameter("userDescription"));
 		user.setUserEmail(request.getParameter("userEmail"));
 		user.setUserQq(request.getParameter("userQq"));
@@ -96,6 +100,11 @@ public class UserController {
 	}
     
 	//退出登录
+	/**
+	 * @param request
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping("/exitLogin")
      public String exitLogin(HttpServletRequest request) throws Exception {
 		HttpSession session=request.getSession();
@@ -103,7 +112,7 @@ public class UserController {
 		System.out.println(user);
 		System.out.println("退出");
 		request.getSession().invalidate();
-		return "redirect:/user/index.action";
+		return "redirect:/home/index.action";
      }
 	
 	
