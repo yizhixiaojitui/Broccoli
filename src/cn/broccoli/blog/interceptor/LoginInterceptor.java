@@ -1,5 +1,6 @@
 package cn.broccoli.blog.interceptor;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,9 +28,9 @@ public class LoginInterceptor implements HandlerInterceptor{
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 	
 		Object user = request.getSession().getAttribute("user");
-		 if (user == null) {
+		 if (null==user) {
 	            System.out.println("尚未登录，调到登录页面");
-	            response.sendRedirect("../login.jsp");
+	            redirect(request,response);
 	            return false;
 	        }
 	        
@@ -62,6 +63,21 @@ public class LoginInterceptor implements HandlerInterceptor{
             return true; 
         else 
             return false; 
+    }
+	
+	public void redirect(HttpServletRequest request, HttpServletResponse response) throws IOException{
+        //获取当前请求的路径
+        String basePath = request.getScheme() + "://" + request.getServerName() + ":"  + request.getServerPort()+request.getContextPath();
+        //如果request.getHeader("X-Requested-With") 返回的是"XMLHttpRequest"说明就是ajax请求，需要特殊处理 否则直接重定向就可以了
+        if("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))){
+            //告诉ajax我是重定向
+            response.setHeader("REDIRECT", "REDIRECT");
+            //告诉ajax我重定向的路径
+            response.setHeader("CONTENTPATH", basePath+"/login.jsp");
+            response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+        }else{
+            response.sendRedirect(basePath + "/login.jsp");
+        }
     }
 
 }

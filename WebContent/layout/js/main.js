@@ -21,6 +21,34 @@ function isMobile_f() {
 }
 isMobile_f();
 
+//这里给所有ajax请求添加一个complete函数
+$.ajaxSetup({
+            complete : function(xhr, status) {
+                //拦截器实现超时跳转到登录页面
+                // 通过xhr取得响应头
+                var REDIRECT = xhr.getResponseHeader("REDIRECT");
+                //如果响应头中包含 REDIRECT 则说明是拦截器返回的
+                if (REDIRECT == "REDIRECT")
+                {
+                    var win = window;
+                    while (win != win.top)
+                    {
+                        win = win.top;
+                    }
+                    
+                    swal({ 
+            			  title: "登陆信息失效", 
+            			  type:"error",
+            			  text: "请重新登陆~", 
+            			  showConfirmButton: true 
+            			},function(){
+            				win.location.href = xhr.getResponseHeader("CONTEXTPATH");
+            			}); 
+                    //重新跳转到 login.html 
+                    
+                }
+            }
+        });
 
 
 function init_sticky_footer() {

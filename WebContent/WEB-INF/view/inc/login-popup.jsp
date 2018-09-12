@@ -27,7 +27,7 @@
 				<div class="inp"><input type="text" id="remail" name="email" placeholder="电子邮箱" /></div>
 				<div class="inp"><input type="text" id="code" name="code" placeholder="邀请码" /></div>
 				<div class="captcha"><div class="captcha_input" style="float: left;" ><input type="text" placeholder="验证码" name="verifyCode" id="re_user_input_verifyCode"/></div>
-				<div class="captcha_img" style="float: left; " ><img class="captcha2" src="${pageContext.request.contextPath }/user/getVerifyCode.action" id="rverifyCodeImage" onclick="javascript:changeImage2();" title="点击图片更换验证码"  />
+				<div class="captcha_img" style="float: left; " ><img class="captcha2" src="${pageContext.request.contextPath }/Login/getVerifyCode.action" id="rverifyCodeImage" onclick="javascript:changeImage2();" title="点击图片更换验证码"  />
 				</div></div>
 				<div class="login" onclick="javascript:regist();">立即注册</div>
 				<div id="msg"><span id="regist_msg_txt"></span></div>
